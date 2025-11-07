@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<body>
+
+<form action="http://localhost:5001/api/model_upload" id="modelUpload" target="_blank"
+      method="post" enctype="multipart/form-data">
+    <h3>Step 1: select model file</h3>
+    <input type="file" name="file" accept=".pkl">
+    <button type="submit">
+        Import model
+    </button>
+</form>
+
+<form action="http://localhost:5001/api/upload_test" id="uploadTest" target="_blank"
+      method="post" enctype="multipart/form-data">
+    <h3>Step 2: select zip file with spectra</h3>
+    <input type="file" name="file" accept=".zip">
+    <button type="submit">
+        Import data
+    </button>
+</form>
+
+<form action="http://localhost:5001/api/get_mean_raw_test" id="getMeanRaw" target="_blank"
+      method="post" enctype="multipart/form-data">
+    <h3>Step 3 (optional): overview of raw data</h3>
+    <button type="submit">
+        Overview
+    </button>
+</form>
+
+<form action="http://localhost:5001/api/test_prpr" id="testPrpr" target="_blank"
+      method="post" enctype="multipart/form-data">
+    <h3>Step 4: preprocess data</h3>
+    <button type="submit">
+        Preprocess
+    </button>
+</form>
+
+<form action="http://localhost:5001/api/test_model" id="testModel" target="_blank"
+      method="post" enctype="multipart/form-data">
+    <h3>Step 5: get predictions</h3>
+    <button type="submit">
+        Get predictions
+    </button>
+</form>
+
+<form action="http://localhost:5001/api/test_download" id="testDownload" target="_blank"
+      method="post" enctype="multipart/form-data">
+    <h3>Step 6 (optional): download results</h3>
+    <button type="submit">
+        Download
+    </button>
+</form>
+
+</body>
+</html>

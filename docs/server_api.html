@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module server_api</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>server_api</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:z%3A%5Cbuilds%5Coleg.ryabchykov%5Cramanmetrix%5Cbackend%5Csources%5Cserver_api.py">z:\builds\oleg.ryabchykov\ramanmetrix\backend\sources\server_api.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="io.html">io</a><br>
+<a href="json.html">json</a><br>
+</td><td width="25%" valign=top><a href="logging.html">logging</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="pickle.html">pickle</a><br>
+<a href="ramanmetrix.preprocess.html">ramanmetrix.preprocess</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-before_request"><strong>before_request</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>A&nbsp;function&nbsp;called&nbsp;prior&nbsp;to&nbsp;every&nbsp;API&nbsp;request.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;None</tt></dd></dl>
+ <dl><dt><a name="-bg_correct_data"><strong>bg_correct_data</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB0FAC0&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;reads&nbsp;calibrated&nbsp;data&nbsp;from&nbsp;session,&nbsp;performs&nbsp;baseline&nbsp;correction&nbsp;and&nbsp;writes&nbsp;data&nbsp;to&nbsp;the&nbsp;session.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;with&nbsp;mean&nbsp;baseline&nbsp;corrected&nbsp;spectrum</tt></dd></dl>
+ <dl><dt><a name="-calib_download"><strong>calib_download</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;sends&nbsp;parameters&nbsp;list&nbsp;from&nbsp;the&nbsp;server&nbsp;(as&nbsp;a&nbsp;TXT&nbsp;file).<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;send_file&nbsp;with&nbsp;with&nbsp;model&nbsp;parameters&nbsp;with&nbsp;calib_standard.txt&nbsp;filename</tt></dd></dl>
+ <dl><dt><a name="-calibrate_data"><strong>calibrate_data</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB0F910&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;reads&nbsp;despiked&nbsp;data&nbsp;from&nbsp;the&nbsp;session,&nbsp;performs&nbsp;calibration,&nbsp;removes&nbsp;standard&nbsp;spectra&nbsp;and&nbsp;writes<br>
+data&nbsp;to&nbsp;the&nbsp;session.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;with&nbsp;mean&nbsp;calibrated&nbsp;spectrum&nbsp;and&nbsp;wavenumber&nbsp;axis&nbsp;calibration&nbsp;residuals</tt></dd></dl>
+ <dl><dt><a name="-data_state"><strong>data_state</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;gets&nbsp;a&nbsp;current&nbsp;data&nbsp;state&nbsp;from&nbsp;the&nbsp;session.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;with&nbsp;a&nbsp;last&nbsp;data&nbsp;processing&nbsp;step</tt></dd></dl>
+ <dl><dt><a name="-db"><strong>db</strong></a>(req, request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;returns&nbsp;a&nbsp;requested&nbsp;object&nbsp;from&nbsp;the&nbsp;session&nbsp;in&nbsp;JSON&nbsp;format<br>
+&nbsp;<br>
+:param&nbsp;req:&nbsp;string&nbsp;of&nbsp;format&nbsp;%action%/%key%<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;what&nbsp;you&nbsp;wanted&nbsp;to&nbsp;get&nbsp;from&nbsp;database</tt></dd></dl>
+ <dl><dt><a name="-defaults"><strong>defaults</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;gets&nbsp;parameters&nbsp;from&nbsp;the&nbsp;session.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;data&nbsp;processing&nbsp;parameters&nbsp;set&nbsp;at&nbsp;the&nbsp;server&nbsp;at&nbsp;the&nbsp;moment</tt></dd></dl>
+ <dl><dt><a name="-despike_data"><strong>despike_data</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB0F760&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;reads&nbsp;raw&nbsp;data&nbsp;from&nbsp;session,&nbsp;performs&nbsp;despiking&nbsp;and&nbsp;writes&nbsp;data&nbsp;to&nbsp;the&nbsp;session.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;with&nbsp;mean&nbsp;despiked&nbsp;sample&nbsp;spectrum</tt></dd></dl>
+ <dl><dt><a name="-exception_handler"><strong>exception_handler</strong></a>(error)</dt><dd><tt>A&nbsp;function&nbsp;for&nbsp;handling&nbsp;passing&nbsp;occurred&nbsp;exceptions&nbsp;to&nbsp;the&nbsp;frontend.<br>
+&nbsp;<br>
+:param&nbsp;error:&nbsp;an&nbsp;error&nbsp;object<br>
+:return:&nbsp;a&nbsp;JSON&nbsp;object&nbsp;{"error":&nbsp;repr(error)}</tt></dd></dl>
+ <dl><dt><a name="-get_mean_raw"><strong>get_mean_raw</strong></a>(test=False, request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB0F520&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;reads&nbsp;raw&nbsp;data&nbsp;from&nbsp;session.<br>
+&nbsp;<br>
+:param&nbsp;test:&nbsp;boolean&nbsp;value&nbsp;to&nbsp;specify&nbsp;if&nbsp;means&nbsp;of&nbsp;test&nbsp;data&nbsp;should&nbsp;be&nbsp;calculated&nbsp;(default&nbsp;for&nbsp;training&nbsp;data:&nbsp;False)<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;with&nbsp;summary,&nbsp;mean&nbsp;raw&nbsp;spectra&nbsp;for&nbsp;each&nbsp;class,&nbsp;mean&nbsp;sample&nbsp;and&nbsp;standard&nbsp;spectra</tt></dd></dl>
+ <dl><dt><a name="-get_mean_raw_test"><strong>get_mean_raw_test</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;reads&nbsp;raw&nbsp;test&nbsp;data&nbsp;from&nbsp;the&nbsp;session&nbsp;by&nbsp;calling&nbsp;<a href="#-get_mean_raw">get_mean_raw</a>(test=True).<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;with&nbsp;summary,&nbsp;mean&nbsp;raw&nbsp;_test_&nbsp;spectra&nbsp;for&nbsp;each&nbsp;class,&nbsp;mean&nbsp;sample&nbsp;and&nbsp;standard&nbsp;spectra</tt></dd></dl>
+ <dl><dt><a name="-get_step"><strong>get_step</strong></a>(key, request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>Method&nbsp;get&nbsp;a&nbsp;status&nbsp;(currently&nbsp;for&nbsp;the&nbsp;model&nbsp;step&nbsp;only)&nbsp;of&nbsp;a&nbsp;running&nbsp;step&nbsp;or&nbsp;the&nbsp;result&nbsp;of&nbsp;the&nbsp;completed&nbsp;step<br>
+&nbsp;<br>
+:param&nbsp;key:&nbsp;step&nbsp;key&nbsp;(e.g.&nbsp;'model'&nbsp;for&nbsp;session['output_model'])<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;with&nbsp;a&nbsp;confusion&nbsp;matrix,&nbsp;class&nbsp;labels,&nbsp;and&nbsp;performance&nbsp;results&nbsp;(sensitivity&nbsp;and&nbsp;specificity)</tt></dd></dl>
+ <dl><dt><a name="-hierarchy_download"><strong>hierarchy_download</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB1D870&gt;)</dt><dd><tt>Function&nbsp;called&nbsp;through&nbsp;API.<br>
+Sends&nbsp;model&nbsp;from&nbsp;the&nbsp;server&nbsp;(as&nbsp;a&nbsp;pickled&nbsp;object).<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;file&nbsp;with&nbsp;model</tt></dd></dl>
+ <dl><dt><a name="-hierarchy_predict_json"><strong>hierarchy_predict_json</strong></a>(filter=None, request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;takes&nbsp;JSON&nbsp;request&nbsp;with&nbsp;the&nbsp;following&nbsp;fields:<br>
+x(list&nbsp;of&nbsp;wavenumber&nbsp;values),<br>
+y(list&nbsp;of&nbsp;list&nbsp;with&nbsp;intensity&nbsp;values),<br>
+standard&nbsp;(optional,&nbsp;list&nbsp;or&nbsp;list&nbsp;of&nbsp;lists&nbsp;with&nbsp;standard&nbsp;spectra),<br>
+standard_intensity&nbsp;(optional,&nbsp;list&nbsp;of&nbsp;lists&nbsp;with&nbsp;standard&nbsp;intensity&nbsp;spectra),<br>
+dark_bg&nbsp;(optional,&nbsp;list&nbsp;of&nbsp;lists&nbsp;with&nbsp;measured&nbsp;dark&nbsp;background),<br>
+diff_subtract&nbsp;(optional,&nbsp;list&nbsp;of&nbsp;lists&nbsp;with&nbsp;spectra&nbsp;to&nbsp;be&nbsp;subtracted,&nbsp;if&nbsp;the&nbsp;model&nbsp;is&nbsp;designed&nbsp;for&nbsp;that).<br>
+&nbsp;<br>
+:param&nbsp;filter:&nbsp;a&nbsp;string&nbsp;with&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;kept&nbsp;from&nbsp;pred_recursive&nbsp;function.&nbsp;If&nbsp;None,&nbsp;the&nbsp;full&nbsp;output&nbsp;is&nbsp;kept<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;with&nbsp;fields&nbsp;metadata&nbsp;(dictionary),&nbsp;predictions&nbsp;(list),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;posterior_probabilities&nbsp;(dictionary,&nbsp;list&nbsp;of&nbsp;list,&nbsp;or&nbsp;an&nbsp;empty&nbsp;string),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;scores&nbsp;(dictionary&nbsp;or&nbsp;list&nbsp;of&nbsp;lists),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;preprocessed&nbsp;(dictionary),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clusters&nbsp;(dictionary&nbsp;or&nbsp;an&nbsp;empty&nbsp;string)</tt></dd></dl>
+ <dl><dt><a name="-hierarchy_upload"><strong>hierarchy_upload</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB1D6C0&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;hierarchy&nbsp;of&nbsp;models&nbsp;upload&nbsp;to&nbsp;the&nbsp;server.<br>
+The&nbsp;bundle&nbsp;can&nbsp;be&nbsp;an&nbsp;exported&nbsp;object&nbsp;or&nbsp;a&nbsp;ZIP&nbsp;file&nbsp;with&nbsp;JSON&nbsp;hierarchy&nbsp;file&nbsp;and&nbsp;PKL&nbsp;model&nbsp;files.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;session&nbsp;parameters</tt></dd></dl>
+ <dl><dt><a name="-init_api"><strong>init_api</strong></a>(_app, is_desktop=False)</dt><dd><tt>Method&nbsp;for&nbsp;initialization&nbsp;of&nbsp;the&nbsp;Flask/Django&nbsp;app&nbsp;globally<br>
+&nbsp;<br>
+:param&nbsp;_app:&nbsp;the&nbsp;app&nbsp;object<br>
+:return:&nbsp;None</tt></dd></dl>
+ <dl><dt><a name="-meta_template_download"><strong>meta_template_download</strong></a>(test=False, request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB1D240&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;generates&nbsp;metadata&nbsp;templates&nbsp;and&nbsp;extorts&nbsp;them&nbsp;in&nbsp;a&nbsp;ZIP&nbsp;file.<br>
+&nbsp;<br>
+:param&nbsp;test:&nbsp;logical.&nbsp;Indicates&nbsp;if&nbsp;training&nbsp;(False)&nbsp;or&nbsp;test&nbsp;(True)&nbsp;results&nbsp;should&nbsp;be&nbsp;downloaded<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;ZIP&nbsp;file&nbsp;with&nbsp;templates</tt></dd></dl>
+ <dl><dt><a name="-meta_template_download_test"><strong>meta_template_download_test</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;test&nbsp;data&nbsp;metadata&nbsp;templates&nbsp;and&nbsp;extorts&nbsp;them&nbsp;in&nbsp;a&nbsp;ZIP&nbsp;file.<br>
+The&nbsp;function&nbsp;calls&nbsp;<a href="#-meta_template_download">meta_template_download</a>(test=True)<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;similar&nbsp;to&nbsp;<a href="#-meta_template_download">meta_template_download</a>()</tt></dd></dl>
+ <dl><dt><a name="-model_convert"><strong>model_convert</strong></a>(to=None, request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;model&nbsp;object&nbsp;conversion&nbsp;via&nbsp;upload&nbsp;(as&nbsp;a&nbsp;pickled&nbsp;file)&nbsp;to&nbsp;the&nbsp;server.<br>
+&nbsp;<br>
+:param&nbsp;to:&nbsp;specifies&nbsp;the&nbsp;desired&nbsp;conversion.&nbsp;Currently&nbsp;available&nbsp;options&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"list_classes"&nbsp;(returns&nbsp;list&nbsp;of&nbsp;classes&nbsp;in&nbsp;the&nbsp;model),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"parameters"&nbsp;(returns&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;parameters),&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"unprotect"&nbsp;(converts&nbsp;the&nbsp;model&nbsp;from&nbsp;protected&nbsp;format&nbsp;to&nbsp;normal&nbsp;PKL&nbsp;file&nbsp;and&nbsp;returns&nbsp;it&nbsp;as&nbsp;attachment)<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;session&nbsp;parameters</tt></dd></dl>
+ <dl><dt><a name="-model_download"><strong>model_download</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB1CA60&gt;)</dt><dd><tt>Function&nbsp;called&nbsp;through&nbsp;API.<br>
+Sends&nbsp;model&nbsp;from&nbsp;the&nbsp;server&nbsp;(as&nbsp;a&nbsp;pickled&nbsp;object).<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;file&nbsp;with&nbsp;model</tt></dd></dl>
+ <dl><dt><a name="-model_upload"><strong>model_upload</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB1D510&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;model&nbsp;object&nbsp;upload&nbsp;(as&nbsp;a&nbsp;file&nbsp;with&nbsp;a&nbsp;pickled&nbsp;object)&nbsp;to&nbsp;the&nbsp;server.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;session&nbsp;parameters</tt></dd></dl>
+ <dl><dt><a name="-normalize_data"><strong>normalize_data</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB0FC70&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;reads&nbsp;baseline&nbsp;corrected&nbsp;data&nbsp;from&nbsp;session,&nbsp;performs&nbsp;normalization&nbsp;and&nbsp;writes&nbsp;data&nbsp;to&nbsp;the&nbsp;session.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;with&nbsp;mean&nbsp;normalized&nbsp;spectrum&nbsp;and&nbsp;mean&nbsp;normalized&nbsp;spectra&nbsp;for&nbsp;each&nbsp;class</tt></dd></dl>
+ <dl><dt><a name="-output_all"><strong>output_all</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>Method&nbsp;gets&nbsp;all&nbsp;outputs&nbsp;as&nbsp;dict</tt></dd></dl>
+ <dl><dt><a name="-output_set"><strong>output_set</strong></a>(key, value, request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>Method&nbsp;that&nbsp;updates&nbsp;outputs&nbsp;dict&nbsp;by&nbsp;setting&nbsp;the&nbsp;specified&nbsp;key&nbsp;and&nbsp;deleting&nbsp;subsequent&nbsp;outputs.<br>
+Saved&nbsp;outputs&nbsp;can&nbsp;be&nbsp;accessed&nbsp;via&nbsp;`api/get_step/&lt;key&gt;`</tt></dd></dl>
+ <dl><dt><a name="-parameters_download"><strong>parameters_download</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, which=None, filename='parameters_v06.txt', default=False, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB1CC10&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;sends&nbsp;parameters&nbsp;list&nbsp;from&nbsp;the&nbsp;server&nbsp;(as&nbsp;a&nbsp;TXT&nbsp;file).<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;which:&nbsp;if&nbsp;specified,&nbsp;list&nbsp;of&nbsp;parameter&nbsp;names&nbsp;to&nbsp;be&nbsp;written&nbsp;in&nbsp;the&nbsp;resulting&nbsp;file<br>
+:param&nbsp;filename:&nbsp;attachment_filename&nbsp;in&nbsp;the&nbsp;returned&nbsp;send_file<br>
+:param&nbsp;default:&nbsp;logical&nbsp;argument&nbsp;that&nbsp;specifies&nbsp;if&nbsp;the&nbsp;default&nbsp;set&nbsp;of&nbsp;parameters&nbsp;should&nbsp;be&nbsp;returned<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;parameters.txt&nbsp;file&nbsp;with&nbsp;model&nbsp;parameters</tt></dd></dl>
+ <dl><dt><a name="-parameters_download_default"><strong>parameters_download_default</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;sends&nbsp;default&nbsp;parameters&nbsp;list&nbsp;from&nbsp;the&nbsp;server&nbsp;(as&nbsp;a&nbsp;TXT&nbsp;file).<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;parameters_default.txt&nbsp;file&nbsp;with&nbsp;default&nbsp;parameters</tt></dd></dl>
+ <dl><dt><a name="-parameters_upload"><strong>parameters_upload</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;parameters&nbsp;upload&nbsp;(as&nbsp;a&nbsp;TXT&nbsp;file)&nbsp;to&nbsp;the&nbsp;server.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;session&nbsp;parameters</tt></dd></dl>
+ <dl><dt><a name="-predict_json"><strong>predict_json</strong></a>(quality_action='remove', request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;takes&nbsp;JSON&nbsp;request&nbsp;with&nbsp;the&nbsp;following&nbsp;fields:<br>
+x(list&nbsp;of&nbsp;wavenumber&nbsp;values),<br>
+y(list&nbsp;of&nbsp;list&nbsp;with&nbsp;intensity&nbsp;values),<br>
+standard&nbsp;(optional,&nbsp;list&nbsp;or&nbsp;list&nbsp;of&nbsp;lists&nbsp;with&nbsp;standard&nbsp;spectra),<br>
+standard_intensity&nbsp;(optional,&nbsp;list&nbsp;of&nbsp;lists&nbsp;with&nbsp;standard&nbsp;intensity&nbsp;spectra),<br>
+dark_bg&nbsp;(optional,&nbsp;list&nbsp;of&nbsp;lists&nbsp;with&nbsp;measured&nbsp;dark&nbsp;background),<br>
+diff_subtract&nbsp;(optional,&nbsp;list&nbsp;of&nbsp;lists&nbsp;with&nbsp;spectra&nbsp;to&nbsp;be&nbsp;subtracted,&nbsp;if&nbsp;the&nbsp;model&nbsp;is&nbsp;designed&nbsp;for&nbsp;that).<br>
+&nbsp;<br>
+:param&nbsp;quality_action:&nbsp;action&nbsp;to&nbsp;perform&nbsp;on&nbsp;quality&nbsp;check.&nbsp;Default:&nbsp;'remove'<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;with&nbsp;fields&nbsp;metadata&nbsp;(dictionary),&nbsp;predictions&nbsp;(list),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;posterior_probabilities&nbsp;(dictionary,&nbsp;list&nbsp;of&nbsp;list,&nbsp;or&nbsp;an&nbsp;empty&nbsp;string),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;scores&nbsp;(dictionary&nbsp;or&nbsp;list&nbsp;of&nbsp;lists),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;preprocessed&nbsp;(dictionary),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clusters&nbsp;(dictionary&nbsp;or&nbsp;an&nbsp;empty&nbsp;string)</tt></dd></dl>
+ <dl><dt><a name="-predict_json_qual_mark"><strong>predict_json_qual_mark</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;identical&nbsp;to&nbsp;predict_json,&nbsp;but&nbsp;marking&nbsp;spectra&nbsp;that&nbsp;failed&nbsp;quality&nbsp;check,&nbsp;instead&nbsp;of&nbsp;removing&nbsp;them.</tt></dd></dl>
+ <dl><dt><a name="-quality_check"><strong>quality_check</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB0FE20&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;reads&nbsp;normalized&nbsp;data&nbsp;from&nbsp;session,&nbsp;performs&nbsp;quality&nbsp;check&nbsp;and&nbsp;writes&nbsp;data&nbsp;to&nbsp;the&nbsp;session.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;summary&nbsp;on&nbsp;data&nbsp;quqlity&nbsp;filtering</tt></dd></dl>
+ <dl><dt><a name="-results_download"><strong>results_download</strong></a>(test=False, include_spectra=True, request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB1CF70&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;collects&nbsp;the&nbsp;analysis&nbsp;results&nbsp;(training&nbsp;or&nbsp;test)&nbsp;into&nbsp;a&nbsp;ZIP&nbsp;file.<br>
+&nbsp;<br>
+:param&nbsp;test:&nbsp;logical.&nbsp;Indicates&nbsp;if&nbsp;training&nbsp;(False)&nbsp;or&nbsp;test&nbsp;(True)&nbsp;results&nbsp;should&nbsp;be&nbsp;downloaded<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;ZIP&nbsp;file&nbsp;with&nbsp;data</tt></dd></dl>
+ <dl><dt><a name="-results_download_small"><strong>results_download_small</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;training&nbsp;data&nbsp;analysis&nbsp;results&nbsp;(without&nbsp;spectra)&nbsp;download.<br>
+The&nbsp;function&nbsp;calls&nbsp;<a href="#-results_download">results_download</a>(test=False,&nbsp;include_spectra=False)<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;similar&nbsp;to&nbsp;<a href="#-results_download">results_download</a>()</tt></dd></dl>
+ <dl><dt><a name="-sess_download"><strong>sess_download</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;session&nbsp;object&nbsp;download&nbsp;(as&nbsp;a&nbsp;file&nbsp;with&nbsp;a&nbsp;pickled&nbsp;object)&nbsp;to&nbsp;the&nbsp;server.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;file&nbsp;with&nbsp;session</tt></dd></dl>
+ <dl><dt><a name="-sess_get"><strong>sess_get</strong></a>(name, session=&lt;LocalProxy unbound&gt;, update_data_id=True)</dt><dd><tt>Function&nbsp;gets&nbsp;the&nbsp;session[name]&nbsp;from&nbsp;the&nbsp;session&nbsp;or&nbsp;from&nbsp;a&nbsp;global&nbsp;'data_global'&nbsp;RAM&nbsp;storage.<br>
+The&nbsp;objects&nbsp;from&nbsp;the&nbsp;session&nbsp;are&nbsp;decrypted&nbsp;using&nbsp;the&nbsp;Advanced&nbsp;Encryption&nbsp;Standard&nbsp;(AES)&nbsp;specification.<br>
+&nbsp;<br>
+:param&nbsp;name:&nbsp;key&nbsp;of&nbsp;the&nbsp;element&nbsp;to&nbsp;call<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;update_data_id:&nbsp;if&nbsp;True&nbsp;-&nbsp;the&nbsp;data&nbsp;id&nbsp;is&nbsp;updated&nbsp;(relevant&nbsp;for&nbsp;session&nbsp;stopping)<br>
+:return:&nbsp;the&nbsp;called&nbsp;object</tt></dd></dl>
+ <dl><dt><a name="-sess_set"><strong>sess_set</strong></a>(name, obj, pop=True, use_ram=True, update_data_id=True, request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>Method&nbsp;writes&nbsp;the&nbsp;object&nbsp;in&nbsp;the&nbsp;encrypted&nbsp;object&nbsp;in&nbsp;the&nbsp;session[name]&nbsp;and&nbsp;(optionally)&nbsp;into&nbsp;a&nbsp;global&nbsp;'data_global'<br>
+RAM&nbsp;storage.<br>
+The&nbsp;objects&nbsp;written&nbsp;to&nbsp;the&nbsp;session&nbsp;are&nbsp;encrypted&nbsp;using&nbsp;the&nbsp;Advanced&nbsp;Encryption&nbsp;Standard&nbsp;(AES)&nbsp;specification.<br>
+&nbsp;<br>
+:param&nbsp;name:&nbsp;a&nbsp;key&nbsp;of&nbsp;the&nbsp;session&nbsp;element&nbsp;to&nbsp;be&nbsp;set<br>
+:param&nbsp;obj:&nbsp;object&nbsp;to&nbsp;be&nbsp;written&nbsp;in&nbsp;the&nbsp;session<br>
+:param&nbsp;pop:&nbsp;logigal.&nbsp;Defines&nbsp;if&nbsp;the&nbsp;subsequent&nbsp;analysis&nbsp;steps&nbsp;should&nbsp;be&nbsp;erased&nbsp;from&nbsp;session&nbsp;(default:&nbsp;True)<br>
+:param&nbsp;use_ram:&nbsp;logical.&nbsp;Specifies&nbsp;if&nbsp;a&nbsp;global&nbsp;object&nbsp;has&nbsp;to&nbsp;be&nbsp;used&nbsp;along&nbsp;with&nbsp;the&nbsp;database&nbsp;to&nbsp;store&nbsp;the&nbsp;data<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;None</tt></dd></dl>
+ <dl><dt><a name="-sess_upload"><strong>sess_upload</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;session&nbsp;object&nbsp;upload&nbsp;(as&nbsp;a&nbsp;file&nbsp;with&nbsp;a&nbsp;pickled&nbsp;object)&nbsp;to&nbsp;the&nbsp;server.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;same&nbsp;as&nbsp;output_set</tt></dd></dl>
+ <dl><dt><a name="-set_params"><strong>set_params</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, obj=None, start_pattern='', as_file=False)</dt><dd><tt>Method&nbsp;that&nbsp;updates&nbsp;parameters&nbsp;that&nbsp;were&nbsp;passed&nbsp;in&nbsp;within&nbsp;the&nbsp;request.<br>
+The&nbsp;parameters&nbsp;are&nbsp;updated&nbsp;in&nbsp;session['parameters'],&nbsp;and&nbsp;(optionally)&nbsp;in&nbsp;obj.parameters.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;obj:&nbsp;if&nbsp;object&nbsp;is&nbsp;set,&nbsp;obj.parameters&nbsp;are&nbsp;updated&nbsp;as&nbsp;well&nbsp;(default:&nbsp;None)<br>
+:param&nbsp;start_pattern:&nbsp;(string&nbsp;or&nbsp;tuple&nbsp;of&nbsp;strings)&nbsp;accept&nbsp;parameters&nbsp;that&nbsp;start&nbsp;with&nbsp;this&nbsp;pattern<br>
+:return:&nbsp;None</tt></dd></dl>
+ <dl><dt><a name="-status_handling"><strong>status_handling</strong></a>()</dt><dd><tt>Decorator&nbsp;to&nbsp;wrap&nbsp;a&nbsp;Django/Flask&nbsp;view&nbsp;function&nbsp;with&nbsp;try-except,<br>
+managing&nbsp;session&nbsp;status&nbsp;updates&nbsp;before&nbsp;and&nbsp;after&nbsp;function&nbsp;execution.</tt></dd></dl>
+ <dl><dt><a name="-stop_it"><strong>stop_it</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;aborts&nbsp;the&nbsp;script&nbsp;at&nbsp;position&nbsp;of&nbsp;"data_global.stop_here(session)"<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;{'requested':&nbsp;'stop',&nbsp;'for':&nbsp;stop_id}</tt></dd></dl>
+ <dl><dt><a name="-test_download"><strong>test_download</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;test&nbsp;data&nbsp;analysis&nbsp;results&nbsp;download.&nbsp;The&nbsp;function&nbsp;calls&nbsp;<a href="#-results_download">results_download</a>(test=True)<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;similar&nbsp;to&nbsp;<a href="#-results_download">results_download</a>()</tt></dd></dl>
+ <dl><dt><a name="-test_download_small"><strong>test_download_small</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;test&nbsp;data&nbsp;analysis&nbsp;results&nbsp;(without&nbsp;spectra)&nbsp;download.<br>
+The&nbsp;function&nbsp;calls&nbsp;<a href="#-results_download">results_download</a>(test=True,&nbsp;include_spectra=False)<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;similar&nbsp;to&nbsp;<a href="#-results_download">results_download</a>()</tt></dd></dl>
+ <dl><dt><a name="-test_model"><strong>test_model</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB1C280&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;reads&nbsp;normalized&nbsp;_test_&nbsp;data&nbsp;from&nbsp;the&nbsp;session&nbsp;and&nbsp;predicts&nbsp;according&nbsp;to&nbsp;the&nbsp;model.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;with&nbsp;a&nbsp;confusion&nbsp;matrix,&nbsp;class&nbsp;labels,&nbsp;and&nbsp;performance&nbsp;results&nbsp;(sensitivity&nbsp;and&nbsp;specificity)</tt></dd></dl>
+ <dl><dt><a name="-test_prpr"><strong>test_prpr</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB1C430&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;reads&nbsp;raw&nbsp;_test_&nbsp;data&nbsp;from&nbsp;the&nbsp;session,&nbsp;performs&nbsp;all&nbsp;preprocessing&nbsp;steps,&nbsp;and&nbsp;writes&nbsp;data&nbsp;to&nbsp;the<br>
+session.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;with&nbsp;mean&nbsp;raw&nbsp;spectrum,&nbsp;mean&nbsp;preprocessed&nbsp;spectrum&nbsp;and&nbsp;mean&nbsp;spectra&nbsp;for&nbsp;each&nbsp;class</tt></dd></dl>
+ <dl><dt><a name="-train_model"><strong>train_model</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB1C040&gt;)</dt><dd><tt>API&nbsp;function&nbsp;that&nbsp;reads&nbsp;normalized&nbsp;data,&nbsp;builds&nbsp;a&nbsp;model&nbsp;and&nbsp;performs&nbsp;cross-validation.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;JSON&nbsp;object&nbsp;with&nbsp;a&nbsp;confusion&nbsp;matrix,&nbsp;class&nbsp;labels,&nbsp;and&nbsp;performance&nbsp;results&nbsp;(sensitivity&nbsp;and&nbsp;specificity)</tt></dd></dl>
+ <dl><dt><a name="-upload"><strong>upload</strong></a>(test=False, metadata_only=False, request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;, step_name=None, progress_callback=&lt;function &lt;lambda&gt; at 0x00007CAA0AB1C790&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;training&nbsp;data&nbsp;upload.<br>
+Uploads&nbsp;data&nbsp;to&nbsp;the&nbsp;server&nbsp;and&nbsp;writes&nbsp;raw&nbsp;data&nbsp;as&nbsp;an&nbsp;SpData&nbsp;object&nbsp;to&nbsp;the&nbsp;session.<br>
+&nbsp;<br>
+:param&nbsp;test:&nbsp;indicates&nbsp;if&nbsp;uploaded&nbsp;date&nbsp;should&nbsp;be&nbsp;treated&nbsp;as&nbsp;training&nbsp;or&nbsp;test&nbsp;data&nbsp;(default:&nbsp;False)<br>
+:param&nbsp;metadata_only:&nbsp;indicates&nbsp;if&nbsp;metadata&nbsp;is&nbsp;imported&nbsp;alone&nbsp;for&nbsp;previously&nbsp;imported&nbsp;data&nbsp;(default:&nbsp;False)<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;step_name:&nbsp;a&nbsp;key&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;status&nbsp;tracking&nbsp;(set&nbsp;to&nbsp;the&nbsp;function&nbsp;name&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:param&nbsp;progress_callback:&nbsp;a&nbsp;callback&nbsp;function&nbsp;(generated&nbsp;by&nbsp;status_handling&nbsp;wrapper)<br>
+:return:&nbsp;session&nbsp;parameters</tt></dd></dl>
+ <dl><dt><a name="-upload_metadata"><strong>upload_metadata</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;metadata&nbsp;upload.&nbsp;The&nbsp;function&nbsp;calls&nbsp;<a href="#-upload">upload</a>(metadata_only=True)<br>
+Uploads&nbsp;_metadata_&nbsp;to&nbsp;the&nbsp;server&nbsp;and&nbsp;writes&nbsp;raw&nbsp;data&nbsp;as&nbsp;an&nbsp;SpData&nbsp;object&nbsp;to&nbsp;the&nbsp;session.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;[same&nbsp;as&nbsp;Upload()]</tt></dd></dl>
+ <dl><dt><a name="-upload_test"><strong>upload_test</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;test&nbsp;data&nbsp;upload.&nbsp;The&nbsp;function&nbsp;calls&nbsp;<a href="#-upload">upload</a>(test=True)<br>
+Uploads&nbsp;_test_&nbsp;data&nbsp;to&nbsp;the&nbsp;server&nbsp;and&nbsp;writes&nbsp;raw&nbsp;data&nbsp;as&nbsp;an&nbsp;SpData&nbsp;object&nbsp;to&nbsp;the&nbsp;session.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;[same&nbsp;as&nbsp;Upload()]</tt></dd></dl>
+ <dl><dt><a name="-upload_test_metadata"><strong>upload_test_metadata</strong></a>(request=&lt;LocalProxy unbound&gt;, session=&lt;LocalProxy unbound&gt;)</dt><dd><tt>API&nbsp;function&nbsp;for&nbsp;test&nbsp;metadata&nbsp;upload.&nbsp;The&nbsp;function&nbsp;calls&nbsp;<a href="#-upload">upload</a>(metadata_only=True,&nbsp;test=True)<br>
+Uploads&nbsp;_test_&nbsp;_metadata_&nbsp;to&nbsp;the&nbsp;server&nbsp;and&nbsp;writes&nbsp;raw&nbsp;data&nbsp;as&nbsp;an&nbsp;SpData&nbsp;object&nbsp;to&nbsp;the&nbsp;session.<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;flask.request&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:param&nbsp;session:&nbsp;flask.session&nbsp;(Passed&nbsp;to&nbsp;the&nbsp;function&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;Django)<br>
+:return:&nbsp;[same&nbsp;as&nbsp;Upload()]</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>data_global</strong> = &lt;ramanmetrix.spData_class.GlobalSpData object&gt;<br>
+<strong>logger</strong> = &lt;Logger server_api (WARNING)&gt;<br>
+<strong>request</strong> = &lt;LocalProxy unbound&gt;<br>
+<strong>session</strong> = &lt;LocalProxy unbound&gt;</td></tr></table>
+</body></html>
